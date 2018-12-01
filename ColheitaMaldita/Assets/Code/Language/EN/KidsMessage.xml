@@ -1,0 +1,11 @@
+<xml>
+	<Messages>
+		<Message>Test Message 1</Message>
+	</Messages>
+	<Messages>
+		<Message>Test Message 2</Message>
+	</Messages>
+	<Messages>
+		<Message>Test Message 3</Message>
+	</Messages>
+</xml>
