@@ -3,5 +3,6 @@
 		<StartGame>Iniciar Jogo</StartGame>
 		<Credits>Créditos</Credits>
 		<Exit>Sair</Exit>
+		<Back>Voltar</Back>
 	</Menu>
 </xml>

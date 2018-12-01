@@ -10,15 +10,26 @@ public class LoadMainMenu : MonoBehaviour {
 	public Button btnStartGame;
 	public Button btnCredits;
 	public Button btnExit;
-	public Button btnEnglish;
-	public Button btnPortuguese;
+	public Dropdown drpLanguage;
 	// Use this for initialization
 	void Start () {
 		Language = GameObject.Find("Language");
-		btnPortuguese.onClick.AddListener(btnPortugueseClick);
-		btnEnglish.onClick.AddListener(btnEnglishClick);
+		drpLanguage.ClearOptions ();
+		drpLanguage.AddOptions (Language.GetComponent<XMLLanguageLoader> ().MainMenuLanguage.Languages);
+		var selectedIndex = Language.GetComponent<XMLLanguageLoader> ().MainMenuLanguage.Languages.IndexOf(
+			Language.GetComponent<XMLLanguageLoader> ().MainMenuLanguage.SelectedLanguage);
+		drpLanguage.value = selectedIndex;
+		drpLanguage.onValueChanged.AddListener (
+			delegate { 
+				drpLanguageChange(drpLanguage); 
+		});
 		btnExit.onClick.AddListener (btnExitClick);
 		btnCredits.onClick.AddListener (btnCreditsClick);
+		btnStartGame.onClick.AddListener (btnStartGameClick);
+	}
+
+	void btnStartGameClick(){
+		SceneManager.LoadScene ("GameOver"); 
 	}
 
 	void btnExitClick()
@@ -37,14 +48,9 @@ public class LoadMainMenu : MonoBehaviour {
 		SceneManager.LoadScene("Credits");
 	}
 
-	void btnPortugueseClick()
+	void drpLanguageChange(Dropdown change)
 	{
-		Language.GetComponent<XMLLanguageLoader> ().SetLanguage ("Portuguese");
-	}
-
-	void btnEnglishClick()
-	{
-		Language.GetComponent<XMLLanguageLoader> ().SetLanguage ("English");
+		Language.GetComponent<XMLLanguageLoader> ().SetLanguage (drpLanguage.options[drpLanguage.value].text);
 	}
 
 	// Update is called once per frame

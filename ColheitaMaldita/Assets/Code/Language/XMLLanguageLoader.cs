@@ -18,7 +18,9 @@ public class MainMenuLanguage {
 	public string StartGame { get; set; }
 	public string Credits { get; set; }
 	public string Exit { get; set; }
+	public string Back { get; set; }
 	public List<string> Languages { get; set; }
+	public string SelectedLanguage { get; set; }
 }
 
 public class XMLLanguageLoader : MonoBehaviour {
@@ -51,15 +53,18 @@ public class XMLLanguageLoader : MonoBehaviour {
 	public List<LanguageSelector> Languages = new List<LanguageSelector>();
 	void LoadLanguagesXML()
 	{
+		Languages.Clear ();
+		MainMenuLanguage.Languages.Clear ();
 		//Assigning Xdocument xmlDoc. Loads the xml file from the file path listed. 
 		xmlDocLanguage = XDocument.Load("Assets/Code/Language/Languages.xml");
 		//This basically breaks down the XML Document into XML Elements. Used later. 
-		var items = xmlDocLanguage.Descendants("Languages").Elements();
+		var items = xmlDocLanguage.Descendants("Languages");
+		Debug.Log(items.Count().ToString());
 		foreach(var item in items)
 		{
 			var l = new LanguageSelector{ 
-			              	Language = item.Parent.Element("Language").Value,
-			              	Folder = item.Parent.Element("Folder").Value
+			              	Language = item.Element("Language").Value,
+			              	Folder = item.Element("Folder").Value
 			};
 			Languages.Add(l);
 			MainMenuLanguage.Languages.Add(l.Language);
@@ -71,10 +76,10 @@ public class XMLLanguageLoader : MonoBehaviour {
 		var l = Languages.FirstOrDefault(x => x.Language == language);
 		if (l == null) l = Languages.First();
 		xmlDocKidsMessages = XDocument.Load("Assets/Code/Language/" + l.Folder + "/KidsMessage.xml");
-		var items = xmlDocKidsMessages.Descendants("Messages").Elements();
+		var items = xmlDocKidsMessages.Descendants("Messages");
 		foreach(var item in items)
 		{
-			KidsMessages.Add(item.Parent.Element("Message").Value);
+			KidsMessages.Add(item.Element("Message").Value);
 		}
 	}
 	
@@ -83,9 +88,11 @@ public class XMLLanguageLoader : MonoBehaviour {
 		var l = Languages.FirstOrDefault(x => x.Language == language);
 		if (l == null) l = Languages.First();
 		xmlDocMainMenu = XDocument.Load("Assets/Code/Language/" + l.Folder + "/MainMenu.xml");
-		var item = xmlDocMainMenu.Descendants("Menu").Elements().First();
-		MainMenuLanguage.StartGame = item.Parent.Element("StartGame").Value;
-		MainMenuLanguage.Credits = item.Parent.Element("Credits").Value;
-		MainMenuLanguage.Exit = item.Parent.Element("Exit").Value;
+		var item = xmlDocMainMenu.Descendants("Menu").First();
+		MainMenuLanguage.StartGame = item.Element("StartGame").Value;
+		MainMenuLanguage.Credits = item.Element("Credits").Value;
+		MainMenuLanguage.Exit = item.Element("Exit").Value;
+		MainMenuLanguage.Back = item.Element ("Back").Value;
+		MainMenuLanguage.SelectedLanguage = l.Language;
 	}
 }

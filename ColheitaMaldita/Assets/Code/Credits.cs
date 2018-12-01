@@ -10,14 +10,18 @@ public class Credits : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Language = GameObject.Find("Language");
 		btnBack.onClick.AddListener (btnBackClick);
+		var mainMenuLanguage = Language.GetComponent<XMLLanguageLoader>().MainMenuLanguage;
+		btnBack.GetComponentInChildren<Text>().text = mainMenuLanguage.Back;
 	}
 
 	void btnBackClick()
 	{
 		SceneManager.LoadScene ("MainMenu");
 	}
-	
+
+	public GameObject Language;
 	// Update is called once per frame
 	void Update () {
 		
