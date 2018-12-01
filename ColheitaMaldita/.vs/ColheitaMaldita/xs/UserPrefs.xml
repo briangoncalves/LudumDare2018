@@ -4,10 +4,10 @@
     <Files>
       <File FileName="Assets/Scripts/Managers/MainMenuManager.cs" Line="65" Column="1" />
       <File FileName="Assets/Code/Language/PT/MainMenu.xml" Line="8" Column="7" />
-      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="48" Column="26" />
-      <File FileName="Assets/Scripts/Behaviours/PlantBehaviour.cs" Line="9" Column="26" />
-      <File FileName="Assets/Scripts/Behaviours/KidSpawnerBehaviour.cs" Line="7" Column="19" />
-      <File FileName="Assets/Scripts/Behaviours/KidBehaviour.cs" Line="15" Column="5" />
+      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="73" Column="5" />
+      <File FileName="Assets/Scripts/Behaviours/PlantBehaviour.cs" Line="143" Column="38" />
+      <File FileName="Assets/Scripts/Behaviours/KidSpawnerBehaviour.cs" Line="5" Column="33" />
+      <File FileName="Assets/Scripts/Behaviours/KidBehaviour.cs" Line="17" Column="82" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
