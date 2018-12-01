@@ -18,14 +18,14 @@ MonoBehaviour:
   deathTime: 10
   waterNeedInterval: 5
   clearTime: 3
-  empty: {fileID: 21300000, guid: 30881bedb793740d788ae8e5e3d20704, type: 3}
-  prepared: {fileID: 21300000, guid: fa827aad0f29f45d4889e051283cd346, type: 3}
-  planted: {fileID: 21300000, guid: 483e56a5882d8437eb3af5ba5c334dc9, type: 3}
-  needWater: {fileID: 21300000, guid: 0595251c7f6114701a8c1b457356d9a0, type: 3}
-  ready: {fileID: 21300000, guid: 8989836743f6c446c99e39124723fb62, type: 3}
-  dead: {fileID: 21300000, guid: 1dfdaf5e416774d2aaa02c4e8a18b712, type: 3}
-  preparing: {fileID: 21300000, guid: 30881bedb793740d788ae8e5e3d20704, type: 3}
-  planting: {fileID: 21300000, guid: fa827aad0f29f45d4889e051283cd346, type: 3}
-  cleaning: {fileID: 21300000, guid: 30881bedb793740d788ae8e5e3d20704, type: 3}
-  watering: {fileID: 21300000, guid: 0595251c7f6114701a8c1b457356d9a0, type: 3}
-  croping: {fileID: 21300000, guid: 8989836743f6c446c99e39124723fb62, type: 3}
+  empty: {fileID: 21300000, guid: a7ab8bcd12b5b4aaa8d8a906efa99da5, type: 3}
+  prepared: {fileID: 21300000, guid: c4b8e2f9a2b626541a5cddff8e3ad58d, type: 3}
+  planted: {fileID: 21300000, guid: 44c9bd2905b9345baa727bdc01183521, type: 3}
+  needWater: {fileID: 21300000, guid: cc72ff1cb1e084b1695dc32c1149bb65, type: 3}
+  ready: {fileID: 21300000, guid: 5a3ef5838e7f9fe4592b05bf56002ac5, type: 3}
+  dead: {fileID: 21300000, guid: e87a47c83934a47bdaaa422c22100042, type: 3}
+  preparing: {fileID: 21300000, guid: a7ab8bcd12b5b4aaa8d8a906efa99da5, type: 3}
+  planting: {fileID: 21300000, guid: c4b8e2f9a2b626541a5cddff8e3ad58d, type: 3}
+  cleaning: {fileID: 21300000, guid: a7ab8bcd12b5b4aaa8d8a906efa99da5, type: 3}
+  watering: {fileID: 21300000, guid: cc72ff1cb1e084b1695dc32c1149bb65, type: 3}
+  croping: {fileID: 21300000, guid: 5a3ef5838e7f9fe4592b05bf56002ac5, type: 3}
