@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class PlantBehaviour : MonoBehaviour 
 {
 
-    public Image img;
+    public SpriteRenderer img;
     plantState state = plantState.empty;
     PlantVariables variables;
     bool canClick = true;
     bool needWater;
     float timer;
+    KidBehaviour kid;
 
 	void Start () 
     {
@@ -53,6 +54,8 @@ public class PlantBehaviour : MonoBehaviour
 
         if (!GameManager.UseChild())
             return;
+
+        kid = GameManager.SpawnKid(transform.position);
 
         canClick = false;
 
@@ -102,7 +105,7 @@ public class PlantBehaviour : MonoBehaviour
         state = plantState.prepared;
         img.sprite = variables.prepared;
         canClick = true;
-        GameManager.ReturnChild();
+        GameManager.ReturnChild(kid);
     }
 
     void Plant()
@@ -111,7 +114,8 @@ public class PlantBehaviour : MonoBehaviour
         needWater = false;
         state = plantState.planted;
         img.sprite = variables.planted;
-        GameManager.ReturnChild();
+        GameManager.ReturnChild(kid);
+
     }
 
     void Water()
@@ -119,7 +123,7 @@ public class PlantBehaviour : MonoBehaviour
         timer = variables.waterNeedInterval;
         needWater = false;
         img.sprite = variables.planted;
-        GameManager.ReturnChild();
+        GameManager.ReturnChild(kid);
     }
 
     void Clear()
@@ -127,7 +131,7 @@ public class PlantBehaviour : MonoBehaviour
         state = plantState.empty;
         img.sprite = variables.empty;
         canClick = true;
-        GameManager.ReturnChild();
+        GameManager.ReturnChild(kid);
     }
 
     void Crop()
@@ -136,7 +140,7 @@ public class PlantBehaviour : MonoBehaviour
         state = plantState.empty;
         img.sprite = variables.empty;
         canClick = true;
-        GameManager.ReturnChild();
+        GameManager.ReturnChild(kid);
 
     }
 

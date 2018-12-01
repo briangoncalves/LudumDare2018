@@ -45,7 +45,9 @@ public class GameManager : MonoBehaviour
 
     public WorldVariables worldVariables;
 
-    public Image seasonsFeedback;
+    public SpriteRenderer seasonsFeedback;
+
+    public KidSpawnerBehaviour kidSpawner;
 
     public static bool UseChild()
     {
@@ -59,11 +61,13 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    public static void ReturnChild()
+    public static void ReturnChild(KidBehaviour kid)
     {
         instance.childAvailable++;
         instance.childAvailable = instance.childAvailable > instance.childQuantitie ? instance.childQuantitie : instance.childAvailable;
         instance.txtChildren.text = instance.childAvailable + "/" + instance.childQuantitie;
+        kid.GoBack();
+        kid = null;
     }
 
 
@@ -125,6 +129,11 @@ public class GameManager : MonoBehaviour
     {
         instance.food++;
         instance.txtFood.text = instance.food.ToString();
+    }
+
+    public static KidBehaviour SpawnKid(Vector3 pos)
+    {
+        return instance.kidSpawner.SendKidTo(pos);
     }
 }
 
