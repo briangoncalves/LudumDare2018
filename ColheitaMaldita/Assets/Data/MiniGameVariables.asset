@@ -8,38 +8,54 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: d17b81c6071e9eb4685ad716ab42a86f, type: 3}
   m_Name: MiniGameVariables
-  m_EditorClassIdentifier: Assembly-CSharp::MiniGameVariables
-  MinNumberOfCars: 4
-  MaxNumberOfCars: 7
+  m_EditorClassIdentifier: 
+  MinNumberOfCars: 3
+  MaxNumberOfCars: 5
   CarSeats:
   - CarSeatPercentage:
     - KidPercentage: 0
       AdultPercentage: 100
     - KidPercentage: 50
       AdultPercentage: 50
+    - KidPercentage: 50
+      AdultPercentage: 50
+    - KidPercentage: 0
+      AdultPercentage: 60
+  - CarSeatPercentage:
+    - KidPercentage: 0
+      AdultPercentage: 100
+    - KidPercentage: 100
+      AdultPercentage: 0
+    - KidPercentage: 80
+      AdultPercentage: 20
+    - KidPercentage: 20
+      AdultPercentage: 20
+  - CarSeatPercentage:
+    - KidPercentage: 0
+      AdultPercentage: 100
+    - KidPercentage: 0
+      AdultPercentage: 100
+    - KidPercentage: 0
+      AdultPercentage: 0
+    - KidPercentage: 0
+      AdultPercentage: 0
+  - CarSeatPercentage:
+    - KidPercentage: 0
+      AdultPercentage: 100
+    - KidPercentage: 100
+      AdultPercentage: 0
+    - KidPercentage: 20
+      AdultPercentage: 20
+    - KidPercentage: 50
+      AdultPercentage: 50
+  - CarSeatPercentage:
+    - KidPercentage: 0
+      AdultPercentage: 100
+    - KidPercentage: 0
+      AdultPercentage: 80
     - KidPercentage: 70
-      AdultPercentage: 30
-  - CarSeatPercentage:
-    - KidPercentage: 0
       AdultPercentage: 0
-    - KidPercentage: 0
-      AdultPercentage: 0
-    - KidPercentage: 0
-      AdultPercentage: 0
-    - KidPercentage: 0
-      AdultPercentage: 0
-  - CarSeatPercentage:
-    - KidPercentage: 0
-      AdultPercentage: 0
-    - KidPercentage: 0
-      AdultPercentage: 0
-    - KidPercentage: 0
-      AdultPercentage: 0
-    - KidPercentage: 0
-      AdultPercentage: 0
-  - CarSeatPercentage: []
-  - CarSeatPercentage: []
-  - CarSeatPercentage: []
-  - CarSeatPercentage: []
+    - KidPercentage: 50
+      AdultPercentage: 50
