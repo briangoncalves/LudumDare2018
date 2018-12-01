@@ -50,7 +50,7 @@ public class MiniGameManager : MonoBehaviour {
 	{
 		if (instance.NumberOfCars > 0) {
 			GameObject go = Instantiate(Car) as GameObject;
-			var v = new Vector3 (11, -0.7f, 0);
+			var v = new Vector3 (11, 0.3f, 0);
 			var q = new Quaternion (0, 0, 0, 0);
 			go.transform.SetPositionAndRotation (v, q);
 			instance.CarNumber = 2;
