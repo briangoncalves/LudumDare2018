@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlantBehaviour : MonoBehaviour {
+public class PlantBehaviour : MonoBehaviour 
+{
 
-    public Text txtFeedbackTemp;
+    public Image img;
     plantState state = plantState.empty;
     PlantVariables variables;
     bool canClick = true;
@@ -29,11 +30,11 @@ public class PlantBehaviour : MonoBehaviour {
                 if(needWater)
                 {
                     state = plantState.dead;
-                    txtFeedbackTemp.text = "dead";
+                    img.sprite = variables.dead;
                 }
                 else
                 {
-                    txtFeedbackTemp.text = "need water";
+                    img.sprite = variables.needWater;
                     needWater = true;
                     timer = variables.deathTime;
                 }
@@ -58,23 +59,23 @@ public class PlantBehaviour : MonoBehaviour {
         switch (state)
         {
             case plantState.empty:
-                txtFeedbackTemp.text = "preparing";
+                img.sprite = variables.empty;
                 Invoke("Prepare", variables.preparingTime);
                 break;
 
             case plantState.prepared:
-                txtFeedbackTemp.text = "planting";
+                img.sprite = variables.planting;
                 Invoke("Plant", variables.plantingTime);
                 break;
 
             case plantState.dead:
-                txtFeedbackTemp.text = "cleaning";
+                img.sprite = variables.cleaning;
                 Invoke("Clear", variables.clearTime);
                 break;
 
 
             case plantState.planted:
-                txtFeedbackTemp.text = "Watering";
+                img.sprite = variables.watering;
                 Invoke("Water", variables.wateringTime);
                 break;
 
@@ -82,12 +83,12 @@ public class PlantBehaviour : MonoBehaviour {
 
                 if(needWater)
                 {
-                    txtFeedbackTemp.text = "Watering";
+                    img.sprite = variables.watering;
                     Invoke("Water", variables.wateringTime);
                 }
                 else
                 {
-                    txtFeedbackTemp.text = "croping";
+                    img.sprite = variables.croping;
                     Invoke("Crop", variables.cropTime);
 
                 }
@@ -99,7 +100,7 @@ public class PlantBehaviour : MonoBehaviour {
     void Prepare()
     {
         state = plantState.prepared;
-        txtFeedbackTemp.text = "prepared";
+        img.sprite = variables.prepared;
         canClick = true;
         GameManager.ReturnChild();
     }
@@ -109,7 +110,7 @@ public class PlantBehaviour : MonoBehaviour {
         timer = variables.waterNeedInterval;
         needWater = false;
         state = plantState.planted;
-        txtFeedbackTemp.text = "plant";
+        img.sprite = variables.planted;
         GameManager.ReturnChild();
     }
 
@@ -117,14 +118,14 @@ public class PlantBehaviour : MonoBehaviour {
     {
         timer = variables.waterNeedInterval;
         needWater = false;
-        txtFeedbackTemp.text = "plant";
+        img.sprite = variables.planted;
         GameManager.ReturnChild();
     }
 
     void Clear()
     {
         state = plantState.empty;
-        txtFeedbackTemp.text = "empty";
+        img.sprite = variables.empty;
         canClick = true;
         GameManager.ReturnChild();
     }
@@ -133,7 +134,7 @@ public class PlantBehaviour : MonoBehaviour {
     {
         GameManager.AddFood();
         state = plantState.empty;
-        txtFeedbackTemp.text = "empty";
+        img.sprite = variables.empty;
         canClick = true;
         GameManager.ReturnChild();
 
@@ -144,7 +145,7 @@ public class PlantBehaviour : MonoBehaviour {
     {
         if(state == plantState.planted)
         {
-            txtFeedbackTemp.text = "ready";
+            img.sprite = variables.ready;
             state = plantState.ready;
             canClick = true;
         }

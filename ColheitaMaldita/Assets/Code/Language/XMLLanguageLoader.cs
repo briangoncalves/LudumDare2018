@@ -18,9 +18,12 @@ public class MainMenuLanguage {
 	public string StartGame { get; set; }
 	public string Credits { get; set; }
 	public string Exit { get; set; }
-	public string Back { get; set; }
 	public List<string> Languages { get; set; }
 	public string SelectedLanguage { get; set; }
+}
+
+public class CreditsLanguage {
+	public string Back { get; set; }
 }
 
 public class XMLLanguageLoader : MonoBehaviour {
@@ -49,6 +52,7 @@ public class XMLLanguageLoader : MonoBehaviour {
 	public List<string> KidsMessages = new List<string>();
 	XDocument xmlDocMainMenu;
 	public MainMenuLanguage MainMenuLanguage = new MainMenuLanguage();
+	public CreditsLanguage CreditsLanguage = new CreditsLanguage();
 	XDocument xmlDocLanguage;
 	public List<LanguageSelector> Languages = new List<LanguageSelector>();
 	void LoadLanguagesXML()
@@ -59,7 +63,6 @@ public class XMLLanguageLoader : MonoBehaviour {
 		xmlDocLanguage = XDocument.Load("Assets/Code/Language/Languages.xml");
 		//This basically breaks down the XML Document into XML Elements. Used later. 
 		var items = xmlDocLanguage.Descendants("Languages");
-		Debug.Log(items.Count().ToString());
 		foreach(var item in items)
 		{
 			var l = new LanguageSelector{ 
@@ -92,7 +95,7 @@ public class XMLLanguageLoader : MonoBehaviour {
 		MainMenuLanguage.StartGame = item.Element("StartGame").Value;
 		MainMenuLanguage.Credits = item.Element("Credits").Value;
 		MainMenuLanguage.Exit = item.Element("Exit").Value;
-		MainMenuLanguage.Back = item.Element ("Back").Value;
+		CreditsLanguage.Back = item.Element ("Back").Value;
 		MainMenuLanguage.SelectedLanguage = l.Language;
 	}
 }

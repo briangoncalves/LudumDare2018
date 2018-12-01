@@ -12,4 +12,16 @@ public class PlantVariables : ScriptableObject
     public float deathTime;
     public float waterNeedInterval;
     public float clearTime;
+
+    public Sprite empty;
+    public Sprite prepared;
+    public Sprite planted;
+    public Sprite needWater;
+    public Sprite ready;
+    public Sprite dead;
+    public Sprite preparing;
+    public Sprite planting;
+    public Sprite cleaning;
+    public Sprite watering;
+    public Sprite croping;
 }

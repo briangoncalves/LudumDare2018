@@ -19,11 +19,14 @@ public class GameManager : MonoBehaviour
         childQuantitie = worldVariables.startChildren;
         childAvailable = worldVariables.startChildren;
         InvokeRepeating("ChangeSeason", worldVariables.SeasonTime, worldVariables.SeasonTime);
+        season = seasons.spring;
+		seasonsFeedback.sprite = worldVariables.spring;
+		txtChildren.text = childAvailable + "/" + childQuantitie;
     }
 
 
-    public Text txtTemp;
-    public Text txtTemp2;
+    public Text txtChildren;
+    public Text txtFood;
     [HideInInspector]
     public int childQuantitie;
     [HideInInspector]
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour
 
     public WorldVariables worldVariables;
 
-
+    public Image seasonsFeedback;
 
     public static bool UseChild()
     {
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
         }
 
         instance.childAvailable--;
-        instance.txtTemp.text = "Children iddle:" + instance.childAvailable + " Total Children: " + instance.childQuantitie;
+        instance.txtChildren.text = instance.childAvailable + "/" + instance.childQuantitie;
         return true;
     }
 
@@ -60,7 +63,7 @@ public class GameManager : MonoBehaviour
     {
         instance.childAvailable++;
         instance.childAvailable = instance.childAvailable > instance.childQuantitie ? instance.childQuantitie : instance.childAvailable;
-        instance.txtTemp.text = "Children iddle:" + instance.childAvailable + " Total Children: " + instance.childQuantitie;
+        instance.txtChildren.text = instance.childAvailable + "/" + instance.childQuantitie;
     }
 
 
@@ -70,7 +73,8 @@ public class GameManager : MonoBehaviour
         {
             case seasons.autumn:
                 season = seasons.winter;
-                if(instance.food >= instance.childQuantitie)
+                seasonsFeedback.sprite = worldVariables.winter;
+                if (instance.food >= instance.childQuantitie)
                 {
                     instance.food = instance.food - instance.childQuantitie;
 
@@ -82,29 +86,31 @@ public class GameManager : MonoBehaviour
                     instance.food = 0;
                     if(childQuantitie <= 0)
                     {
-                        print("Game over");
-                        Time.timeScale = 0;
+						UnityEngine.SceneManagement.SceneManager.LoadScene ("GameOver");
                     }
                 }
 
-                instance.txtTemp.text = "Children iddle:" + instance.childAvailable + " Total Children: " + instance.childQuantitie;
+                instance.txtChildren.text = instance.childAvailable + "/" + instance.childQuantitie;
                 break;
 
             case seasons.spring:
                 season = seasons.summer;
+                seasonsFeedback.sprite = worldVariables.summer;
                 break;
             case seasons.summer:
                 season = seasons.autumn;
+                seasonsFeedback.sprite = worldVariables.autumn;
                 break;
 
             case seasons.winter:
                 season = seasons.spring;
+                seasonsFeedback.sprite = worldVariables.spring;
                 yearsCount++;
                 break;
 
         }
 
-        txtTemp2.text = "Current season: " + season.ToString() + " years: " + yearsCount + " food: "+ food;
+        txtFood.text =  food.ToString();
     }
 
     public static void GrowCrop()
@@ -118,7 +124,7 @@ public class GameManager : MonoBehaviour
     public static void AddFood()
     {
         instance.food++;
-        instance.txtTemp2.text = "Current season: " + instance.season.ToString() + " years: " + instance.yearsCount + " food: " + instance.food;
+        instance.txtFood.text = instance.food.ToString();
     }
 }
 

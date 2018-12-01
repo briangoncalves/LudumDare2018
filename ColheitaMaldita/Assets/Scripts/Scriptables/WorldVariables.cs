@@ -8,5 +8,10 @@ public class WorldVariables : ScriptableObject
     public float SeasonTime;
     public int soulProgression;
     public int startSoulAmount;
-   public int startChildren;
+    public int startChildren;
+
+    public Sprite autumn;
+    public Sprite winter;
+    public Sprite spring;
+    public Sprite summer;
 }
