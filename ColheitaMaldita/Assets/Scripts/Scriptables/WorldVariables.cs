@@ -14,4 +14,9 @@ public class WorldVariables : ScriptableObject
     public Sprite winter;
     public Sprite spring;
     public Sprite summer;
+
+	public Sprite autumnSky;
+	public Sprite winterSky;
+	public Sprite springSky;
+	public Sprite summerSky;
 }

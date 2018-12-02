@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("ChangeSeason", worldVariables.SeasonTime, worldVariables.SeasonTime);
         season = seasons.spring;
 		seasonsFeedback.sprite = worldVariables.spring;
+		seasonsSkyFeedback.sprite = worldVariables.springSky;
 		txtChildren.text = childAvailable + "/" + childQuantitie;
     }
 
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     public WorldVariables worldVariables;
 
     public SpriteRenderer seasonsFeedback;
+
+	public SpriteRenderer seasonsSkyFeedback;
 
     public KidSpawnerBehaviour kidSpawner;
 
@@ -75,9 +78,10 @@ public class GameManager : MonoBehaviour
     {
         switch(season)
         {
-            case seasons.autumn:
-                season = seasons.winter;
-                seasonsFeedback.sprite = worldVariables.winter;
+		case seasons.autumn:
+			season = seasons.winter;
+			seasonsFeedback.sprite = worldVariables.winter;
+			seasonsSkyFeedback.sprite = worldVariables.winterSky;
                 if (instance.food >= instance.childQuantitie)
                 {
                     instance.food = instance.food - instance.childQuantitie;
@@ -100,15 +104,18 @@ public class GameManager : MonoBehaviour
             case seasons.spring:
                 season = seasons.summer;
                 seasonsFeedback.sprite = worldVariables.summer;
+			seasonsSkyFeedback.sprite = worldVariables.summerSky;
                 break;
             case seasons.summer:
                 season = seasons.autumn;
                 seasonsFeedback.sprite = worldVariables.autumn;
+			seasonsSkyFeedback.sprite = worldVariables.autumnSky;
                 break;
 
             case seasons.winter:
                 season = seasons.spring;
                 seasonsFeedback.sprite = worldVariables.spring;
+			seasonsSkyFeedback.sprite = worldVariables.springSky;
                 yearsCount++;
                 break;
 
