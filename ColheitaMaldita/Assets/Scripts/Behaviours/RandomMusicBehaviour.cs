@@ -15,7 +15,9 @@ public class RandomMusicBehaviour : MonoBehaviour {
 
     void PlayRandom()
     {
-        Invoke("PlayMusic", Random.Range(60, 180));
+        var time = Random.Range(60, 180);
+        print(time);
+        Invoke("PlayMusic", time);
     }
 
     void PlayMusic()

@@ -156,7 +156,8 @@ public class GameManager : MonoBehaviour
 
     public static void AddKid(int quantitie)
     {
-        instance.AddChild(quantitie);
+        if(quantitie > 0 || instance.childQuantitie > 1)
+            instance.AddChild(quantitie);
     }
 
     void AddChild(int quantitie)
