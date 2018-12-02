@@ -26,10 +26,15 @@ public class GodBehaviour : MonoBehaviour {
 
         if(soulCount >= soulNeeded)
         {
-            soulCount = soulCount - soulNeeded;
-            soulNeeded += GameManager.instance.worldVariables.soulProgression;
-            GameManager.GrowCrop();
             animator.SetTrigger("play");
+            Invoke("Grow", 2);
         }
+    }
+
+    void Grow()
+    {
+        soulCount = soulCount - soulNeeded;
+        soulNeeded += GameManager.instance.worldVariables.soulProgression;
+        GameManager.GrowCrop();
     }
 }
