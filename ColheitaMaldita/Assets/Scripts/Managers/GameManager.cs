@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
 	public GameObject MiniGame;
 	public GameObject MainCamera;
 
+    public GameObject[] adults;
+
     public static bool UseChild()
     {
         if(instance.childAvailable == 0)
@@ -165,6 +167,16 @@ public class GameManager : MonoBehaviour
         childAvailable += quantitie;
         childQuantitie += quantitie;
         txtChildren.text = childAvailable + "/" + childQuantitie;
+    }
+
+    public static void ShowAdults(int amount)
+    {
+        foreach (var item in instance.adults)
+        {
+          
+            item.SetActive(amount > 0);
+            amount--;
+        }
     }
 }
 

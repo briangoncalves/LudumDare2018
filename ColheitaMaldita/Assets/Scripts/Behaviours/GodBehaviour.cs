@@ -31,7 +31,7 @@ public class GodBehaviour : MonoBehaviour {
     {
         soulCount += amountAdults;
         GameManager.AddKid(amountKids);
-
+        GameManager.ShowAdults(amountAdults);
         if(soulCount >= soulNeeded)
         {
             animator.SetTrigger("play");
