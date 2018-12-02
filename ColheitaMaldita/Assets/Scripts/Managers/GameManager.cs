@@ -153,6 +153,18 @@ public class GameManager : MonoBehaviour
     {
         return instance.kidSpawner.SendKidTo(pos);
     }
+
+    public static void AddKid(int quantitie)
+    {
+        instance.AddChild(quantitie);
+    }
+
+    void AddChild(int quantitie)
+    {
+        childAvailable += quantitie;
+        childQuantitie += quantitie;
+        txtChildren.text = childAvailable + "/" + childQuantitie;
+    }
 }
 
 public enum seasons

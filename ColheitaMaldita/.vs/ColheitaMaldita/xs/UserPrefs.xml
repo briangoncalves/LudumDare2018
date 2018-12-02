@@ -1,16 +1,10 @@
 ﻿<Properties StartupConfiguration="{500CBAE2-4FAA-1C92-84D5-3FA6F882CA83}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Behaviours/KidBehaviour.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Managers/MainMenuManager.cs" Line="78" Column="6" />
-      <File FileName="Assets/Code/Language/PT/MainMenu.xml" Line="8" Column="7" />
-      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="73" Column="1" />
-      <File FileName="Assets/Scripts/Behaviours/PlantBehaviour.cs" Line="143" Column="38" />
-      <File FileName="Assets/Scripts/Behaviours/KidSpawnerBehaviour.cs" Line="5" Column="33" />
-      <File FileName="Assets/Scripts/Behaviours/KidBehaviour.cs" Line="32" Column="52" />
-      <File FileName="Assets/Sky FX Pack/Scripts/ScrollBehaviour.cs" Line="18" Column="9" />
-      <File FileName="Assets/Scripts/Behaviours/GodBehaviour.cs" Line="30" Column="31" />
-      <File FileName="Assets/Scripts/Managers/CreditsManager.cs" Line="23" Column="1" />
+      <File FileName="Assets/Scripts/Behaviours/CarBehavior.cs" Line="44" Column="61" />
+      <File FileName="Assets/Scripts/Behaviours/GodBehaviour.cs" Line="32" Column="15" />
+      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="6" Column="14" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

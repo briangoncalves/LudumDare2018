@@ -41,7 +41,7 @@ public class CarBehavior : MonoBehaviour {
 				GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
 				GameManager.instance.childAvailable += KidsInCar;
 				GameManager.instance.childQuantitie += KidsInCar;
-				GameObject.Find ("god").GetComponent<GodBehaviour> ().AddSoul (AdultsInCar);
+				GameObject.Find ("god").GetComponent<GodBehaviour> ().AddSoul (AdultsInCar, KidsInCar);
 			}
 		}
 

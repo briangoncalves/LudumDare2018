@@ -26,9 +26,10 @@ public class GodBehaviour : MonoBehaviour {
 		GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
     }
 
-    public void AddSoul(int amount)
+    public void AddSoul(int amountAdults,int amountKids)
     {
-        soulCount += amount;
+        soulCount += amountAdults;
+        GameManager.AddKid(amountKids);
 
         if(soulCount >= soulNeeded)
         {
