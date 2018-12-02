@@ -24,6 +24,7 @@ public class GodBehaviour : MonoBehaviour {
 		GameManager.instance.MainCamera.GetComponent<AudioSource> ().Stop ();
 		GameManager.instance.MainCamera.GetComponent<AudioSource> ().clip = worldVariables.miniGameMusic;
 		GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
+        GameManager.AddKid(-1);
     }
 
     public void AddSoul(int amountAdults,int amountKids)
