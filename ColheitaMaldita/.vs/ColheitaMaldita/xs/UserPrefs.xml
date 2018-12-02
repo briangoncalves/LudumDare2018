@@ -9,7 +9,7 @@
       <File FileName="Assets/Scripts/Behaviours/KidSpawnerBehaviour.cs" Line="5" Column="33" />
       <File FileName="Assets/Scripts/Behaviours/KidBehaviour.cs" Line="17" Column="82" />
       <File FileName="Assets/Sky FX Pack/Scripts/ScrollBehaviour.cs" Line="18" Column="9" />
-      <File FileName="Assets/Scripts/Behaviours/GodBehaviour.cs" Line="33" Column="1" />
+      <File FileName="Assets/Scripts/Behaviours/GodBehaviour.cs" Line="30" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
