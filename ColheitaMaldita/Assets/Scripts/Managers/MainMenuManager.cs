@@ -36,6 +36,7 @@ public class MainMenuManager : MonoBehaviour {
 	}
 
 	void btnStartGameClick(){
+		GameObject.Find("Language").GetComponent<AudioSource> ().Stop ();
 		SceneManager.LoadScene ("SampleScene"); 
 	}
 

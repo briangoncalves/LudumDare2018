@@ -23,6 +23,7 @@ public class GameOverManager : MonoBehaviour {
 		Timer -= Time.deltaTime;
 		if (Timer <= 0) {
 			Timer = 0;
+			GameObject.Find("Language").GetComponent<AudioSource> ().Play ();
 			SceneManager.LoadScene ("MainMenu");
 		}
 	}

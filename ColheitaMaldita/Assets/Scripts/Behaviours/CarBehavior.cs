@@ -27,19 +27,20 @@ public class CarBehavior : MonoBehaviour {
 			transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed, Camera.main.transform);
 
 		if (isBreaking) {
-			MoveSpeed -= 0.1f;
+			MoveSpeed -= 0.05f;
 			transform.Translate(Vector3.left * Time.deltaTime* MoveSpeed, Camera.main.transform);
 			if (MoveSpeed <= 0f)
 				isBreaking = false;
 		}
 
-		if (Input.GetMouseButton (0)) {
+		if (Input.GetMouseButton (0) && canMove) {
 			canMove = false;
 			isBreaking = true;
 			foreach (var audio in this.GetComponents<AudioSource>()) {
 				if (audio.isPlaying)
 					audio.Pause ();
 			}
+			this.transform.Find ("CarCrash").GetComponent<AudioSource> ().Play ();
 		}
 	}
 
