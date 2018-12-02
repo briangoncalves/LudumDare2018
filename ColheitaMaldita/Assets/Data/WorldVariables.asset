@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90916c4ab44414a40b39acfa92da5b7b, type: 3}
   m_Name: WorldVariables
   m_EditorClassIdentifier: 
-  SeasonTime: 7
+  SeasonTime: 20
   soulProgression: 1
   startSoulAmount: 3
   startChildren: 2
