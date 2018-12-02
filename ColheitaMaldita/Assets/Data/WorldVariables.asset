@@ -27,3 +27,5 @@ MonoBehaviour:
   winterIcon: {fileID: 21300000, guid: 225d530c3bcf9ce4889dfb92d4dc2dd4, type: 3}
   springIcon: {fileID: 21300000, guid: 66195f97a77654040ad9c059dde5cb29, type: 3}
   summerIcon: {fileID: 21300000, guid: 5b1d63b3e2dfbac41b97521e3c040b00, type: 3}
+  mainGameMusic: {fileID: 8300000, guid: 2cb790c4e3570b640b46a4c5ed05d9ac, type: 3}
+  miniGameMusic: {fileID: 8300000, guid: 81a47aff165ddc7439908ce6b9b853f3, type: 3}

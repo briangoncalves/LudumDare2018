@@ -14,10 +14,16 @@ public class GodBehaviour : MonoBehaviour {
         soulNeeded = GameManager.instance.worldVariables.startSoulAmount;
     }
 
+	public WorldVariables worldVariables;
+
     public void Clicked()
     {
-        print("Go to minigame");
-        AddSoul(2);
+		GameManager.instance.MainGame.SetActive (false);
+		GameManager.instance.MiniGame.SetActive (true);
+		MiniGameManager.instance.StartVariables ();
+		GameManager.instance.MainCamera.GetComponent<AudioSource> ().Stop ();
+		GameManager.instance.MainCamera.GetComponent<AudioSource> ().clip = worldVariables.miniGameMusic;
+		GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
     }
 
     public void AddSoul(int amount)

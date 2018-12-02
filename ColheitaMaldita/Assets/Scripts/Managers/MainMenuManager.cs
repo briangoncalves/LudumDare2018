@@ -42,8 +42,7 @@ public class MainMenuManager : MonoBehaviour {
     {
         filledTransition.fillAmount = 0;
         loading = false;
-        initGame = true;
-     
+        initGame = true;     
 	}
 
 	void btnExitClick()
@@ -104,11 +103,9 @@ public class MainMenuManager : MonoBehaviour {
             if (filledTransition.fillAmount >= 1)
             {
                 initGame = false;
+				instance.Language.GetComponent<AudioSource> ().Stop ();
                 SceneManager.LoadScene("MainGame");
             }
         }
-
     }
-
-
 }

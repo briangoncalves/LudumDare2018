@@ -5,12 +5,21 @@ using UnityEngine.UI;
 
 public class MiniGameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+	public void StartVariables()
+	{
 		instance.NumberOfCars = instance.Variables.GetCars ();
 		instance.CarNumber = 1;
-		SetCarSeats (GameObject.Find("Car"));
-		SetCarAudio (GameObject.Find ("Car"));
+		if (GameObject.Find ("Car") == null)
+			CreateNewCar ();
+		else {
+			SetCarSeats (GameObject.Find ("Car"));
+			SetCarAudio (GameObject.Find ("Car"));
+		}
+	}
+
+	// Use this for initialization
+	void Start () {
+		StartVariables ();
 	}
 
 	public static MiniGameManager instance;
@@ -59,6 +68,7 @@ public class MiniGameManager : MonoBehaviour {
 	{
 		if (instance.NumberOfCars > 0) {
 			GameObject go = Instantiate(Car) as GameObject;
+			go.transform.parent = GameManager.instance.MiniGame.transform;
 			var v = new Vector3 (11, 0.3f, 0);
 			var q = new Quaternion (0, 0, 0, 0);
 			go.transform.SetPositionAndRotation (v, q);

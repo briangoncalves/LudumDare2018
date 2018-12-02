@@ -21,6 +21,8 @@ public class CarBehavior : MonoBehaviour {
 	public int AdultsInCar = 1;
 	public int KidsInCar = 0;
 	public bool isBreaking = false;
+	public WorldVariables worldVariables;
+
 	// Update is called once per frame
 	void Update () {		
 		if(canMove)
@@ -28,9 +30,19 @@ public class CarBehavior : MonoBehaviour {
 
 		if (isBreaking) {
 			MoveSpeed -= 0.05f;
-			transform.Translate(Vector3.left * Time.deltaTime* MoveSpeed, Camera.main.transform);
-			if (MoveSpeed <= 0f)
+			transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed, Camera.main.transform);
+			if (MoveSpeed <= 0f) {
 				isBreaking = false;
+				MiniGameManager.instance.NumberOfCars = 0;
+				GameManager.instance.MainGame.SetActive (true);
+				GameManager.instance.MiniGame.SetActive (false);
+				GameManager.instance.MainCamera.GetComponent<AudioSource> ().Stop ();
+				GameManager.instance.MainCamera.GetComponent<AudioSource> ().clip = worldVariables.mainGameMusic;
+				GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
+				GameManager.instance.childAvailable += KidsInCar;
+				GameManager.instance.childQuantitie += KidsInCar;
+				GameObject.Find ("god").GetComponent<GodBehaviour> ().AddSoul (AdultsInCar);
+			}
 		}
 
 		if (Input.GetMouseButton (0) && canMove) {
@@ -45,9 +57,8 @@ public class CarBehavior : MonoBehaviour {
 	}
 
 	void OnBecameInvisible() {
-		MiniGameManager minigame = GameObject.FindObjectOfType<MiniGameManager>();
-		minigame.NumberOfCars--;
-		minigame.CreateNewCar();
+		MiniGameManager.instance.NumberOfCars--;
+		MiniGameManager.instance.CreateNewCar();
 		Destroy(gameObject);
 	}
 }

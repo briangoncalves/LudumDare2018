@@ -25,4 +25,6 @@ public class WorldVariables : ScriptableObject
 	public Sprite springIcon;
 	public Sprite summerIcon;
 
+	public AudioClip mainGameMusic;
+	public AudioClip miniGameMusic;
 }

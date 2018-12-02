@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviour
 
     public KidSpawnerBehaviour kidSpawner;
 
+	public GameObject MainGame;
+	public GameObject MiniGame;
+	public GameObject MainCamera;
+
     public static bool UseChild()
     {
         if(instance.childAvailable == 0)

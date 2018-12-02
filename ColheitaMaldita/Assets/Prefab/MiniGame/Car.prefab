@@ -405,6 +405,7 @@ MonoBehaviour:
   AdultsInCar: 1
   KidsInCar: 0
   isBreaking: 0
+  worldVariables: {fileID: 11400000, guid: d2aae4d8f6c0f411a93a985c38299401, type: 2}
 --- !u!212 &212327995129383106
 SpriteRenderer:
   m_ObjectHideFlags: 1
