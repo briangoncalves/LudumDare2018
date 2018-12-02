@@ -6,9 +6,11 @@ public class GodBehaviour : MonoBehaviour {
 
     int soulCount;
     int soulNeeded;
+    Animator animator;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         soulNeeded = GameManager.instance.worldVariables.startSoulAmount;
     }
 
@@ -27,6 +29,7 @@ public class GodBehaviour : MonoBehaviour {
             soulCount = soulCount - soulNeeded;
             soulNeeded += GameManager.instance.worldVariables.soulProgression;
             GameManager.GrowCrop();
+            animator.SetTrigger("play");
         }
     }
 }
