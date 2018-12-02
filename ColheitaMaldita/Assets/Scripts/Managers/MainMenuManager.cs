@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour {
 
 	public static MainMenuManager instance;
-
+    bool starting = true;
+    bool loading = false;
+    bool initGame = false;
 	void Awake()
 	{
 		instance = this;
@@ -18,6 +20,7 @@ public class MainMenuManager : MonoBehaviour {
 	public Button btnCredits;
 	public Button btnExit;
 	public Dropdown drpLanguage;
+    public Image filledTransition;
 	// Use this for initialization
 	void Start () {
 		instance.Language = GameObject.Find("Language");
@@ -35,9 +38,12 @@ public class MainMenuManager : MonoBehaviour {
 		instance.btnStartGame.onClick.AddListener (btnStartGameClick);
 	}
 
-	void btnStartGameClick(){
-		GameObject.Find("Language").GetComponent<AudioSource> ().Stop ();
-		SceneManager.LoadScene ("SampleScene"); 
+	void btnStartGameClick()
+    {
+        filledTransition.fillAmount = 0;
+        loading = false;
+        initGame = true;
+     
 	}
 
 	void btnExitClick()
@@ -53,8 +59,10 @@ public class MainMenuManager : MonoBehaviour {
 
 	void btnCreditsClick()
 	{
-		SceneManager.LoadScene("Credits");
-	}
+        loading = true;
+        initGame = false;
+        filledTransition.fillAmount = 0;
+    }
 
 	void drpLanguageChange(Dropdown change)
 	{
@@ -67,5 +75,40 @@ public class MainMenuManager : MonoBehaviour {
 		instance.btnStartGame.GetComponentInChildren<Text>().text = mainMenuLanguage.StartGame;
 		instance.btnCredits.GetComponentInChildren<Text>().text = mainMenuLanguage.Credits;
 		instance.btnExit.GetComponentInChildren<Text>().text = mainMenuLanguage.Exit;
-	}
+        if(starting)
+        {
+            filledTransition.fillAmount -= Time.deltaTime * 2;
+            filledTransition.fillClockwise = true;
+            if (filledTransition.fillAmount <=0 )
+            {
+                starting = false;
+            }
+        }
+
+        if(loading)
+        {
+            filledTransition.fillAmount += Time.deltaTime * 2;
+            filledTransition.fillClockwise = true;
+            if (filledTransition.fillAmount >= 1)
+            {
+                loading = false;
+                SceneManager.LoadScene("Credits");
+            }
+        }
+
+
+        if (initGame)
+        {
+            filledTransition.fillAmount += Time.deltaTime * 2;
+            filledTransition.fillClockwise = true;
+            if (filledTransition.fillAmount >= 1)
+            {
+                initGame = false;
+                SceneManager.LoadScene("MainGame");
+            }
+        }
+
+    }
+
+
 }

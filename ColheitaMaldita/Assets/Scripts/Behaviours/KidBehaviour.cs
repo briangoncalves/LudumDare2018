@@ -8,12 +8,18 @@ public class KidBehaviour : MonoBehaviour {
     bool goToTarget;
     bool goBack;
     float maxSpeed = 6f;
+    Animator anim;
 
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     void Update () 
     {
         if(goBack)
         {
+            anim.SetTrigger("back");
             transform.localPosition = Vector3.MoveTowards(transform.localPosition, Vector3.zero, maxSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.localPosition, Vector3.zero) < 0.1)
             {
@@ -23,8 +29,10 @@ public class KidBehaviour : MonoBehaviour {
         else if(goToTarget)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, maxSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.localPosition, target) < 0.1)
+            if (Vector3.Distance(transform.position, target) < 0.1)
             {
+
+                anim.SetTrigger("work");
                 goToTarget = false;
             }
         }
