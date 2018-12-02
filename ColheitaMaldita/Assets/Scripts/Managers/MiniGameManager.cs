@@ -10,9 +10,18 @@ public class MiniGameManager : MonoBehaviour {
 		instance.NumberOfCars = instance.Variables.GetCars ();
 		instance.CarNumber = 1;
 		SetCarSeats (GameObject.Find("Car"));
+		SetCarAudio (GameObject.Find ("Car"));
 	}
 
 	public static MiniGameManager instance;
+
+	void SetCarAudio(GameObject go)
+	{
+		var audios = go.GetComponents<AudioSource> ();
+		var rnd = new System.Random ();
+		var carIndex = rnd.Next (0, audios.Length - 1);
+		audios [carIndex].Play();
+	}
 
 	void Awake()
 	{
@@ -53,7 +62,8 @@ public class MiniGameManager : MonoBehaviour {
 			var v = new Vector3 (11, 0.3f, 0);
 			var q = new Quaternion (0, 0, 0, 0);
 			go.transform.SetPositionAndRotation (v, q);
-			instance.CarNumber = 2;
+			SetCarAudio (go);
+			instance.CarNumber += 1;
 			SetCarSeats (go);
 		}
 	}

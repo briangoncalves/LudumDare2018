@@ -20,13 +20,26 @@ public class CarBehavior : MonoBehaviour {
 	public MiniGameVariables Variables;
 	public int AdultsInCar = 1;
 	public int KidsInCar = 0;
+	public bool isBreaking = false;
 	// Update is called once per frame
 	void Update () {		
 		if(canMove)
 			transform.Translate(Vector3.left * Time.deltaTime * MoveSpeed, Camera.main.transform);
 
+		if (isBreaking) {
+			MoveSpeed -= 0.1f;
+			transform.Translate(Vector3.left * Time.deltaTime* MoveSpeed, Camera.main.transform);
+			if (MoveSpeed <= 0f)
+				isBreaking = false;
+		}
+
 		if (Input.GetMouseButton (0)) {
 			canMove = false;
+			isBreaking = true;
+			foreach (var audio in this.GetComponents<AudioSource>()) {
+				if (audio.isPlaying)
+					audio.Pause ();
+			}
 		}
 	}
 
