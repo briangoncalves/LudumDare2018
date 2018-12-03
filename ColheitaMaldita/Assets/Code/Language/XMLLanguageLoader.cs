@@ -22,6 +22,12 @@ public class MainMenuLanguage {
 	public string SelectedLanguage { get; set; }
 }
 
+public class RandomMessages
+{
+    public string[] Messages { get; set; }
+}
+
+
 public class TutorialLanguage {
 	public string StartMessage {
 		get;
@@ -78,16 +84,18 @@ public class XMLLanguageLoader : MonoBehaviour {
 		LoadKidsMessages(language);
 		LoadMainMenu(language);
 		LoadTutorial(language);
+        LoadRandomMessages(language);
         selectedLanguage = language;
     }
 	
 	XDocument xmlDocKidsMessages;
 	public List<string> KidsMessages = new List<string>();
-	XDocument xmlDocMainMenu;
+    public List<string> RandomMessages = new List<string>();
+    XDocument xmlDocMainMenu;
 	public MainMenuLanguage MainMenuLanguage = new MainMenuLanguage();
 	public CreditsLanguage CreditsLanguage = new CreditsLanguage();
 	public TutorialLanguage TutorialLanguage = new TutorialLanguage ();
-	XDocument xmlDocLanguage;
+    XDocument xmlDocLanguage;
 	XDocument xmlDocTutorial;
 	public List<LanguageSelector> Languages = new List<LanguageSelector>();
 	void LoadLanguagesXML()
@@ -147,4 +155,16 @@ public class XMLLanguageLoader : MonoBehaviour {
 		TutorialLanguage.PlantPrepared = item.Element ("PlantPrepared").Value;
 		TutorialLanguage.StartMessage = item.Element ("StartMessage").Value;
 	}
+
+    void LoadRandomMessages(string language)
+    {
+        var l = Languages.FirstOrDefault(x => x.Language == language);
+        if (l == null) l = Languages.First();
+        xmlDocKidsMessages = XDocument.Load("Assets/Code/Language/" + l.Folder + "/GodMessages.xml");
+        var items = xmlDocKidsMessages.Descendants("Messages");
+        foreach (var item in items)
+        {
+            RandomMessages.Add(item.Element("Message").Value);
+        }
+    }
 }
