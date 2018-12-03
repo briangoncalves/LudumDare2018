@@ -1,11 +1,11 @@
 ﻿<xml>
 	<Messages>
-		<StartMessage>Se clicar na terra a criança faz o trampo sujo pra vc</StartMessage>
-		<PlantPrepared>Depois para semear</PlantPrepared>
-		<PlantPlanted>Agora eu preciso de almas vc consegue na rodovia escolhendo os carros melhores clique em mim</PlantPlanted>
-		<NeedWater>Regue as plantas</NeedWater>
-		<PlantDead>Limpe o terreno se a planta morrer</PlantDead>
-		<Autumn>Se as crianças não tiverem milho para o inverno elas morrem</Autumn>
+		<StartMessage>If you click on the terrain the kid will do the dirty work for you</StartMessage>
+		<PlantPrepared>Again to seed</PlantPrepared>
+		<PlantPlanted>Now I need souls, click me and go to the road to get some</PlantPlanted>
+		<NeedWater>Water the plants!</NeedWater>
+		<PlantDead>Clear if the plant die</PlantDead>
+		<Autumn>To survive winter, the kids need corn</Autumn>
 	</Messages>
 </xml>
 

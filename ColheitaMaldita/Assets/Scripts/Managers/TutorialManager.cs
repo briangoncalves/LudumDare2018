@@ -7,15 +7,27 @@ public class TutorialManager : MonoBehaviour {
     bool tutorialComplete;
     List<string> tutorialCompleted = new List<string>();
 	public static TutorialManager instance;
+    int count;
 	void Awake()
 	{
 		instance = this;
 	}
+
 	public GameObject Language;
     private void Start()
     {
-		instance.Language = GameObject.Find("Language");
-		GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.StartMessage);
+        tutorialComplete = PlayerPrefs.GetInt("tutorialComplete", 0) == 1;
+        if (tutorialComplete)
+        {
+            FindObjectOfType<GodBehaviour>().StartTalking();
+        }
+        else
+        {
+            instance.Language = GameObject.Find("Language");
+            GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader>().TutorialLanguage.StartMessage);
+        }
+
+
     }
 
     public void CheckTutorial(string action)
@@ -25,10 +37,13 @@ public class TutorialManager : MonoBehaviour {
 
         tutorialCompleted.Add(action);
 
+        count++;
+
         switch (action)
         {
             case "PlantPrepared":
 			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.PlantPrepared);
+
                 break;
 
             case "PlantPlanted":
@@ -47,6 +62,13 @@ public class TutorialManager : MonoBehaviour {
 			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.Autumn);
                 break;
 
+        }
+
+        if(count == 5)
+        {
+            tutorialComplete = true;
+            FindObjectOfType<GodBehaviour>().StartTalking();
+            PlayerPrefs.SetInt("tutorialComplete", 1);
         }
     }
 }

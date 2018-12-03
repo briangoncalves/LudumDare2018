@@ -49,8 +49,8 @@ public class GodBehaviour : MonoBehaviour {
 
     public void StartTalking()
     {
-        //TODO buscar frases do idioma e colocar na lista
-
+        XMLLanguageLoader language = FindObjectOfType<XMLLanguageLoader>();
+        phrases = language.RandomMessages;
         InvokeRepeating("Talk", 10, 10);
     }
 
