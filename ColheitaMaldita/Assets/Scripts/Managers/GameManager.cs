@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-
     private void Start()
     {
         plants = FindObjectsOfType<PlantBehaviour>();
@@ -23,7 +22,10 @@ public class GameManager : MonoBehaviour
 		seasonsFeedback.sprite = worldVariables.spring;
 		seasonsSkyFeedback.sprite = worldVariables.springSky;
 		seasonsIconFeedback.sprite = worldVariables.springIcon;
+		//seasonEffects.transform.Find ("Spring").gameObject.SetActive (true);
 		txtChildren.text = childAvailable + "/" + childQuantitie;
+		yearsCount = 0;
+		GameObject.Find ("Years").GetComponent<Text> ().text = "0 Year";
     }
 
 
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviour
     public int yearsCount;
 
     public seasons season = seasons.spring;
+
+	public GameObject seasonEffects;
 
     public int food;
 
@@ -93,6 +97,8 @@ public class GameManager : MonoBehaviour
         {
 		case seasons.autumn:
 			season = seasons.winter;
+			seasonEffects.transform.Find ("Autumn").gameObject.SetActive (false);
+			seasonEffects.transform.Find ("Winter").gameObject.SetActive (true);
 			seasonsFeedback.sprite = worldVariables.winter;
 			seasonsSkyFeedback.sprite = worldVariables.winterSky;
 			seasonsIconFeedback.sprite = worldVariables.winterIcon;
@@ -117,24 +123,34 @@ public class GameManager : MonoBehaviour
 
             case seasons.spring:
                 season = seasons.summer;
+				seasonEffects.transform.Find ("Spring").gameObject.SetActive (false);
+				seasonEffects.transform.Find ("Summer").gameObject.SetActive (true);
                 seasonsFeedback.sprite = worldVariables.summer;
-			seasonsSkyFeedback.sprite = worldVariables.summerSky;
-			seasonsIconFeedback.sprite = worldVariables.summerIcon;
+				seasonsSkyFeedback.sprite = worldVariables.summerSky;
+				seasonsIconFeedback.sprite = worldVariables.summerIcon;
                 break;
             case seasons.summer:
                 season = seasons.autumn;
+				seasonEffects.transform.Find ("Summer").gameObject.SetActive (false);
+				seasonEffects.transform.Find ("Autumn").gameObject.SetActive (true);
                 CheckTutorial("Autumn");
                 seasonsFeedback.sprite = worldVariables.autumn;
-			seasonsSkyFeedback.sprite = worldVariables.autumnSky;
-			seasonsIconFeedback.sprite = worldVariables.autumnIcon;
+				seasonsSkyFeedback.sprite = worldVariables.autumnSky;
+				seasonsIconFeedback.sprite = worldVariables.autumnIcon;
                 break;
 
-            case seasons.winter:
-                season = seasons.spring;
-                seasonsFeedback.sprite = worldVariables.spring;
+		case seasons.winter:
+			season = seasons.spring;
+			seasonEffects.transform.Find ("Winter").gameObject.SetActive (false);
+			seasonEffects.transform.Find ("Spring").gameObject.SetActive (true);
+			seasonsFeedback.sprite = worldVariables.spring;
 			seasonsSkyFeedback.sprite = worldVariables.springSky;
 			seasonsIconFeedback.sprite = worldVariables.springIcon;
-                yearsCount++;
+			yearsCount++;
+			if (yearsCount == 1)
+				GameObject.Find ("Years").GetComponent<Text> ().text = "1 Year";
+			else
+				GameObject.Find ("Years").GetComponent<Text> ().text = yearsCount + " Years";
                 break;
 
         }
