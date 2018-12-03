@@ -1,0 +1,8 @@
+<xml>
+	<Menu>
+		<StartGame>Start Game</StartGame>
+		<Credits>Credits</Credits>
+		<Exit>Exit</Exit>
+		<Back>Back</Back>
+	</Menu>
+</xml>

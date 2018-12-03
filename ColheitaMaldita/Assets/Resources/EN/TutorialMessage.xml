@@ -1,0 +1,11 @@
+﻿<xml>
+	<Messages>
+		<StartMessage>If you click on the terrain the kid will do the dirty work for you</StartMessage>
+		<PlantPrepared>Again to seed</PlantPrepared>
+		<PlantPlanted>Now I need souls, click me and go to the road to get some</PlantPlanted>
+		<NeedWater>Water the plants!</NeedWater>
+		<PlantDead>Clear if the plant die</PlantDead>
+		<Autumn>To survive winter, the kids need corn</Autumn>
+	</Messages>
+</xml>
+
