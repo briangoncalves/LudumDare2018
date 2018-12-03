@@ -12,9 +12,9 @@ public class MiniGameVariables : ScriptableObject
 	public CarSeat[] CarSeats;
 
 	public int GetCars()
-	{
-		var random = new System.Random ();
-		return random.Next (MinNumberOfCars, MaxNumberOfCars);
+	{		
+		var numberofCars = UnityEngine.Random.Range (MinNumberOfCars, MaxNumberOfCars+1);
+		return numberofCars;
 	}
 }
 
@@ -27,10 +27,9 @@ public class CarSeat
 	{
 		List<CarSeatType> seats = new List<CarSeatType> ();
 		foreach (var p in CarSeatPercentage) {
-			var random = new System.Random ();
-			if (random.Next (0, 100) <= p.AdultPercentage)
+			if (UnityEngine.Random.Range(0, 101) <= p.AdultPercentage)
 				seats.Add (CarSeatType.Adult);
-			else if (random.Next (0, 100) <= p.KidPercentage)
+			else if (UnityEngine.Random.Range (0, 101) <= p.KidPercentage)
 				seats.Add (CarSeatType.Kid);
 			else
 				seats.Add (CarSeatType.None);
