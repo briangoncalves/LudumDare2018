@@ -12,7 +12,6 @@ public class GodBehaviour : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         soulNeeded = GameManager.instance.worldVariables.startSoulAmount;
-        GameManager.ShowText("Se clicar na terra a criança faz o trampo sujo pra vc");
     }
 
 	public WorldVariables worldVariables;

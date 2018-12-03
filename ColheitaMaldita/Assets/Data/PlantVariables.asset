@@ -22,10 +22,10 @@ MonoBehaviour:
   prepared: {fileID: 21300000, guid: c4b8e2f9a2b626541a5cddff8e3ad58d, type: 3}
   planted: {fileID: 21300000, guid: 44c9bd2905b9345baa727bdc01183521, type: 3}
   needWater: {fileID: 21300000, guid: cc72ff1cb1e084b1695dc32c1149bb65, type: 3}
-  ready: {fileID: 21300000, guid: 5a3ef5838e7f9fe4592b05bf56002ac5, type: 3}
-  dead: {fileID: 21300000, guid: e87a47c83934a47bdaaa422c22100042, type: 3}
+  ready: {fileID: 21300000, guid: c6aca86bb8f2c4a47a0c9e99f5903027, type: 3}
+  dead: {fileID: 21300000, guid: a3f10851a49e243c7b3da042853463d5, type: 3}
   preparing: {fileID: 21300000, guid: a7ab8bcd12b5b4aaa8d8a906efa99da5, type: 3}
   planting: {fileID: 21300000, guid: c4b8e2f9a2b626541a5cddff8e3ad58d, type: 3}
   cleaning: {fileID: 21300000, guid: a7ab8bcd12b5b4aaa8d8a906efa99da5, type: 3}
   watering: {fileID: 21300000, guid: cc72ff1cb1e084b1695dc32c1149bb65, type: 3}
-  croping: {fileID: 21300000, guid: 5a3ef5838e7f9fe4592b05bf56002ac5, type: 3}
+  croping: {fileID: 21300000, guid: c6aca86bb8f2c4a47a0c9e99f5903027, type: 3}

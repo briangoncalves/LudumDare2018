@@ -32,12 +32,14 @@ public class PlantBehaviour : MonoBehaviour
                 {
                     state = plantState.dead;
                     img.sprite = variables.dead;
+                    GameManager.CheckTutorial("PlantDead");
                 }
                 else
                 {
                     img.sprite = variables.needWater;
                     needWater = true;
                     timer = variables.deathTime;
+                    GameManager.CheckTutorial("NeedWater");
                 }
                 canClick = true;
             }
@@ -49,6 +51,9 @@ public class PlantBehaviour : MonoBehaviour
 
     public void Clicked()
     {
+
+   
+
         if (!canClick)
             return;
 
@@ -64,6 +69,7 @@ public class PlantBehaviour : MonoBehaviour
             case plantState.empty:
                 img.sprite = variables.empty;
                 Invoke("Prepare", variables.preparingTime);
+               
                 break;
 
             case plantState.prepared:
@@ -106,6 +112,7 @@ public class PlantBehaviour : MonoBehaviour
         img.sprite = variables.prepared;
         canClick = true;
         GameManager.ReturnChild(kid);
+        GameManager.CheckTutorial("PlantPrepared");
     }
 
     void Plant()
@@ -115,6 +122,7 @@ public class PlantBehaviour : MonoBehaviour
         state = plantState.planted;
         img.sprite = variables.planted;
         GameManager.ReturnChild(kid);
+        GameManager.CheckTutorial("PlantPlanted");
 
     }
 

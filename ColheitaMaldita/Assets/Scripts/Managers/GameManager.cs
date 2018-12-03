@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
 
     public Text Speech;
 
+    public TutorialManager tutorialManager;
+
     public static bool UseChild()
     {
         if(instance.childAvailable == 0)
@@ -121,6 +123,7 @@ public class GameManager : MonoBehaviour
                 break;
             case seasons.summer:
                 season = seasons.autumn;
+                CheckTutorial("Autumn");
                 seasonsFeedback.sprite = worldVariables.autumn;
 			seasonsSkyFeedback.sprite = worldVariables.autumnSky;
 			seasonsIconFeedback.sprite = worldVariables.autumnIcon;
@@ -191,6 +194,11 @@ public class GameManager : MonoBehaviour
     void HideBubble()
     {
         instance.Speech.transform.parent.gameObject.SetActive(false);
+    }
+
+    public static void CheckTutorial(string action)
+    {
+        instance.tutorialManager.CheckTutorial(action);
     }
 }
 
