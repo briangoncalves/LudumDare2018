@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 		seasonsFeedback.sprite = worldVariables.spring;
 		seasonsSkyFeedback.sprite = worldVariables.springSky;
 		seasonsIconFeedback.sprite = worldVariables.springIcon;
-		//seasonEffects.transform.Find ("Spring").gameObject.SetActive (true);
+		seasonEffects.transform.Find ("Spring").gameObject.SetActive (true);
 		txtChildren.text = childAvailable + "/" + childQuantitie;
 		yearsCount = 0;
 		GameObject.Find ("Years").GetComponent<Text> ().text = "0 Year";
