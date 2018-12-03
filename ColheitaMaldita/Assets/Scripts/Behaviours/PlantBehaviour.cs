@@ -120,10 +120,14 @@ public class PlantBehaviour : MonoBehaviour
 
     void Water()
     {
-        timer = variables.waterNeedInterval;
-        needWater = false;
-        img.sprite = variables.planted;
-        GameManager.ReturnChild(kid);
+		if (state == plantState.ready) {
+			Crop ();
+		} else {
+			timer = variables.waterNeedInterval;
+			needWater = false;
+			img.sprite = variables.planted;
+			GameManager.ReturnChild (kid);
+		}
     }
 
     void Clear()

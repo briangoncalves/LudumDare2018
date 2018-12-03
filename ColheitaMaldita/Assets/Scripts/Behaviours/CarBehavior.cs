@@ -62,6 +62,7 @@ public class CarBehavior : MonoBehaviour {
 			GameManager.instance.MainCamera.GetComponent<AudioSource> ().Stop ();
 			GameManager.instance.MainCamera.GetComponent<AudioSource> ().clip = worldVariables.mainGameMusic;
 			GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
+			GameObject.Find ("god").GetComponent<GodBehaviour> ().AddSoul (0, 1);
 		}
 	}
 }
