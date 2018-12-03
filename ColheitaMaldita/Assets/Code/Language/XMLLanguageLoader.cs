@@ -103,7 +103,10 @@ public class XMLLanguageLoader : MonoBehaviour {
 		Languages.Clear ();
 		MainMenuLanguage.Languages.Clear ();
 		//Assigning Xdocument xmlDoc. Loads the xml file from the file path listed. 
-		xmlDocLanguage = XDocument.Load("Assets/Code/Language/Languages.xml");
+		using (TextReader reader = new StringReader (Resources.Load<TextAsset>("Languages").text)) {
+			//xmlDocLanguage = XDocument.Load ("Assets/Code/Language/Languages.xml");
+			xmlDocLanguage = XDocument.Load (reader);
+		}
 		//This basically breaks down the XML Document into XML Elements. Used later. 
 		var items = xmlDocLanguage.Descendants("Languages");
 		foreach(var item in items)
@@ -121,7 +124,10 @@ public class XMLLanguageLoader : MonoBehaviour {
 	{
 		var l = Languages.FirstOrDefault(x => x.Language == language);
 		if (l == null) l = Languages.First();
-		xmlDocKidsMessages = XDocument.Load("Assets/Code/Language/" + l.Folder + "/KidsMessage.xml");
+		using (TextReader reader = new StringReader (Resources.Load<TextAsset> (l.Folder + "/KidsMessage").text)) {
+			//xmlDocKidsMessages = XDocument.Load ("Assets/Code/Language/" + l.Folder + "/KidsMessage.xml");
+			xmlDocKidsMessages = XDocument.Load (reader);
+		}
 		var items = xmlDocKidsMessages.Descendants("Messages");
 		foreach(var item in items)
 		{
@@ -133,7 +139,10 @@ public class XMLLanguageLoader : MonoBehaviour {
 	{
 		var l = Languages.FirstOrDefault(x => x.Language == language);
 		if (l == null) l = Languages.First();
-		xmlDocMainMenu = XDocument.Load("Assets/Code/Language/" + l.Folder + "/MainMenu.xml");
+		using (TextReader reader = new StringReader (Resources.Load<TextAsset> (l.Folder + "/MainMenu").text)) {
+			//xmlDocMainMenu = XDocument.Load ("Assets/Code/Language/" + l.Folder + "/MainMenu.xml");
+			xmlDocMainMenu = XDocument.Load (reader);
+		}
 		var item = xmlDocMainMenu.Descendants("Menu").First();
 		MainMenuLanguage.StartGame = item.Element("StartGame").Value;
 		MainMenuLanguage.Credits = item.Element("Credits").Value;
@@ -146,7 +155,11 @@ public class XMLLanguageLoader : MonoBehaviour {
 	{
 		var l = Languages.FirstOrDefault(x => x.Language == language);
 		if (l == null) l = Languages.First();
-		xmlDocTutorial = XDocument.Load("Assets/Code/Language/" + l.Folder + "/TutorialMessage.xml");
+		using (TextReader reader = new StringReader(Resources.Load<TextAsset>(l.Folder + "/TutorialMessage").text))
+			{
+				//xmlDocTutorial = XDocument.Load("Assets/Code/Language/" + l.Folder + "/TutorialMessage.xml");
+				xmlDocTutorial = XDocument.Load(reader);
+			}
 		var item = xmlDocTutorial.Descendants ("Messages").First ();
 		TutorialLanguage.Autumn = item.Element ("Autumn").Value;
 		TutorialLanguage.NeedWater = item.Element ("NeedWater").Value;
@@ -160,7 +173,11 @@ public class XMLLanguageLoader : MonoBehaviour {
     {
         var l = Languages.FirstOrDefault(x => x.Language == language);
         if (l == null) l = Languages.First();
-        xmlDocKidsMessages = XDocument.Load("Assets/Code/Language/" + l.Folder + "/GodMessages.xml");
+		using (TextReader reader = new StringReader(Resources.Load<TextAsset>(l.Folder + "/GodMessages").text))
+		{
+        	//xmlDocKidsMessages = XDocument.Load("Assets/Code/Language/" + l.Folder + "/GodMessages.xml");
+			xmlDocKidsMessages = XDocument.Load(reader);
+		}
         var items = xmlDocKidsMessages.Descendants("Messages");
         foreach (var item in items)
         {
