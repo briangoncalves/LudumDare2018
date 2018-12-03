@@ -28,14 +28,18 @@ public class CreditsLanguage {
 
 public class XMLLanguageLoader : MonoBehaviour {
 
+    public static string selectedLanguage;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 		DontDestroyOnLoad(gameObject);
 		MainMenuLanguage.Languages = new List<string>();
 		LoadLanguagesXML();
 		SetLanguage("English");
 		SceneManager.LoadScene("MainMenu");
-	}
+        selectedLanguage = "English";
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -46,7 +50,8 @@ public class XMLLanguageLoader : MonoBehaviour {
 	{
 		LoadKidsMessages(language);
 		LoadMainMenu(language);
-	}
+        selectedLanguage = language;
+    }
 	
 	XDocument xmlDocKidsMessages;
 	public List<string> KidsMessages = new List<string>();

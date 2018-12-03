@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{500CBAE2-4FAA-1C92-84D5-3FA6F882CA83}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Managers/MiniGameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Behaviours/CarBehavior.cs" Line="44" Column="61" />
-      <File FileName="Assets/Scripts/Behaviours/GodBehaviour.cs" Line="32" Column="15" />
-      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="6" Column="14" />
+      <File FileName="Assets/Scripts/Behaviours/CarBehavior.cs" Line="60" Column="31" />
+      <File FileName="Assets/Scripts/Behaviours/GodBehaviour.cs" Line="34" Column="46" />
+      <File FileName="Assets/Scripts/Managers/GameManager.cs" Line="178" Column="22" />
+      <File FileName="Assets/Code/Language/XMLLanguageLoader.cs" Line="107" Column="1" />
+      <File FileName="Assets/Scripts/Behaviours/RandomMusicBehaviour.cs" Line="22" Column="5" />
+      <File FileName="Assets/Scripts/Managers/MiniGameManager.cs" Line="70" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

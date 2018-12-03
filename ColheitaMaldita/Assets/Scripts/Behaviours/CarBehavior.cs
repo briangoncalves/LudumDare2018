@@ -9,12 +9,11 @@ public class CarBehavior : MonoBehaviour {
 	void Start () {
 		var sprite = this.GetComponentInParent<SpriteRenderer>();
 		var rnd = new System.Random();
-		var colorId = rnd.Next(0, colors.Length -1); 
-		sprite.color = colors[colorId];
+		var colorId = rnd.Next(0, sprites.Length -1); 
+        sprite.sprite = sprites[colorId];
 	}
 
-	Color[] colors = new Color[] { Color.blue, Color.green, Color.grey, Color.red };
-
+    public Sprite[] sprites;
 	public float MoveSpeed = 5f;
 	public bool canMove = true;
 	public MiniGameVariables Variables;

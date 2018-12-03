@@ -19,7 +19,7 @@ public class MiniGameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		StartVariables ();
+	//StartVariables ();
 	}
 
 	public static MiniGameManager instance;
@@ -62,7 +62,17 @@ public class MiniGameManager : MonoBehaviour {
 				cb.KidsInCar += 1;
 		}
 		instance.txtPeopleInCar.text = cb.AdultsInCar + " Adults in car and " + cb.KidsInCar + " Kids in car";
-	}
+        var carname = "Family_" + cb.AdultsInCar + "a_" + cb.KidsInCar + "c";
+        print(carname);
+        for (int i = 0; i < go.transform.childCount; i++)
+        {
+            if(go.transform.GetChild(i).name == carname)
+            {
+                go.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
 
 	public void CreateNewCar()
 	{
