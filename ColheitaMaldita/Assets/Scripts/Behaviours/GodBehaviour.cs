@@ -7,6 +7,7 @@ public class GodBehaviour : MonoBehaviour {
     int soulCount;
     int soulNeeded;
     Animator animator;
+    List<string> phrases = new List<string>();
 
     private void Start()
     {
@@ -45,4 +46,17 @@ public class GodBehaviour : MonoBehaviour {
         soulNeeded += GameManager.instance.worldVariables.soulProgression;
         GameManager.GrowCrop();
     }
+
+    public void StartTalking()
+    {
+        //TODO buscar frases do idioma e colocar na lista
+
+        InvokeRepeating("Talk", 10, 10);
+    }
+
+    void Talk()
+    {
+        GameManager.ShowText(phrases[Random.Range(0, phrases.Count)]);
+    }
+
 }
