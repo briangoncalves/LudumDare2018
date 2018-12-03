@@ -8,8 +8,7 @@ public class CarBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		var sprite = this.GetComponentInParent<SpriteRenderer>();
-		var rnd = new System.Random();
-		var colorId = rnd.Next(0, sprites.Length -1); 
+		var colorId = Random.Range(0, sprites.Length); 
         sprite.sprite = sprites[colorId];
 	}
 
@@ -38,8 +37,6 @@ public class CarBehavior : MonoBehaviour {
 				GameManager.instance.MainCamera.GetComponent<AudioSource> ().Stop ();
 				GameManager.instance.MainCamera.GetComponent<AudioSource> ().clip = worldVariables.mainGameMusic;
 				GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
-				GameManager.instance.childAvailable += KidsInCar;
-				GameManager.instance.childQuantitie += KidsInCar;
 				GameObject.Find ("god").GetComponent<GodBehaviour> ().AddSoul (AdultsInCar, KidsInCar);
 			}
 		}
@@ -49,7 +46,7 @@ public class CarBehavior : MonoBehaviour {
 			isBreaking = true;
 			foreach (var audio in this.GetComponents<AudioSource>()) {
 				if (audio.isPlaying)
-					audio.Pause ();
+					audio.Stop ();
 			}
 			this.transform.Find ("CarCrash").GetComponent<AudioSource> ().Play ();
 		}
@@ -59,5 +56,12 @@ public class CarBehavior : MonoBehaviour {
 		MiniGameManager.instance.NumberOfCars--;
 		MiniGameManager.instance.CreateNewCar();
 		Destroy(gameObject);
+		if (MiniGameManager.instance.NumberOfCars == 0) {
+			GameManager.instance.MainGame.SetActive (true);
+			GameManager.instance.MiniGame.SetActive (false);
+			GameManager.instance.MainCamera.GetComponent<AudioSource> ().Stop ();
+			GameManager.instance.MainCamera.GetComponent<AudioSource> ().clip = worldVariables.mainGameMusic;
+			GameManager.instance.MainCamera.GetComponent<AudioSource> ().Play ();
+		}
 	}
 }

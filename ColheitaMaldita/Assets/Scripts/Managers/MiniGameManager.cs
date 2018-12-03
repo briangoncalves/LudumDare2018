@@ -8,13 +8,8 @@ public class MiniGameManager : MonoBehaviour {
 	public void StartVariables()
 	{
 		instance.NumberOfCars = instance.Variables.GetCars ();
-		instance.CarNumber = 1;
-		if (GameObject.Find ("Car") == null)
-			CreateNewCar ();
-		else {
-			SetCarSeats (GameObject.Find ("Car"));
-			SetCarAudio (GameObject.Find ("Car"));
-		}
+		instance.CarNumber = 0;
+		CreateNewCar ();
 	}
 
 	// Use this for initialization
@@ -27,8 +22,7 @@ public class MiniGameManager : MonoBehaviour {
 	void SetCarAudio(GameObject go)
 	{
 		var audios = go.GetComponents<AudioSource> ();
-		var rnd = new System.Random ();
-		var carIndex = rnd.Next (0, audios.Length - 1);
+		var carIndex = Random.Range(0, audios.Length);
 		audios [carIndex].Play();
 	}
 
@@ -83,8 +77,9 @@ public class MiniGameManager : MonoBehaviour {
 			var q = new Quaternion (0, 0, 0, 0);
 			go.transform.SetPositionAndRotation (v, q);
 			SetCarAudio (go);
-			instance.CarNumber += 1;
 			SetCarSeats (go);
+			instance.CarNumber += 1;
+
 		}
 	}
 }
