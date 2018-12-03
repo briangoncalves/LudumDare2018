@@ -6,10 +6,16 @@ public class TutorialManager : MonoBehaviour {
 
     bool tutorialComplete;
     List<string> tutorialCompleted = new List<string>();
-
+	public static TutorialManager instance;
+	void Awake()
+	{
+		instance = this;
+	}
+	public GameObject Language;
     private void Start()
     {
-        GameManager.ShowText("Se clicar na terra a criança faz o trampo sujo pra vc");
+		instance.Language = GameObject.Find("Language");
+		GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.StartMessage);
     }
 
     public void CheckTutorial(string action)
@@ -22,23 +28,23 @@ public class TutorialManager : MonoBehaviour {
         switch (action)
         {
             case "PlantPrepared":
-                GameManager.ShowText("Depois para semear");
+			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.PlantPrepared);
                 break;
 
             case "PlantPlanted":
-                GameManager.ShowText("Agora eu preciso de almas vc consegue na rodovia escolhendo os carros melhores clique em mim");
+			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.PlantPlanted);
                 break;
 
             case "NeedWater":
-                GameManager.ShowText("Regue as plantas");
+			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.NeedWater);
                 break;
 
             case "PlantDead":
-                GameManager.ShowText("Limpe o terreno se a planta morrer");
+			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.PlantDead);
                 break;
 
             case "Autumn":
-                GameManager.ShowText("Se as crianças não tiverem milho para o inverno elas morrem");
+			GameManager.ShowText(instance.Language.GetComponent<XMLLanguageLoader> ().TutorialLanguage.Autumn);
                 break;
 
         }
