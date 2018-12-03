@@ -12,6 +12,7 @@ public class GodBehaviour : MonoBehaviour {
     {
         animator = GetComponent<Animator>();
         soulNeeded = GameManager.instance.worldVariables.startSoulAmount;
+        GameManager.ShowText("Alow seus arrombado");
     }
 
 	public WorldVariables worldVariables;

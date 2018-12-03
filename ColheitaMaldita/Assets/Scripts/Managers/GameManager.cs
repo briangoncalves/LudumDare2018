@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject[] adults;
 
+    public Text Speech;
+
     public static bool UseChild()
     {
         if(instance.childAvailable == 0)
@@ -177,6 +179,18 @@ public class GameManager : MonoBehaviour
             item.SetActive(amount > 0);
             amount--;
         }
+    }
+
+    public static void ShowText(string text)
+    {
+        instance.Speech.text = text;
+        instance.Speech.transform.parent.gameObject.SetActive(true);
+        instance.Invoke("HideBubble", 3);
+    }
+
+    void HideBubble()
+    {
+        instance.Speech.transform.parent.gameObject.SetActive(false);
     }
 }
 
