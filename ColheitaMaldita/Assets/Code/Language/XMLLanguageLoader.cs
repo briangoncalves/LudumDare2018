@@ -22,6 +22,33 @@ public class MainMenuLanguage {
 	public string SelectedLanguage { get; set; }
 }
 
+public class TutorialLanguage {
+	public string StartMessage {
+		get;
+		set;
+	}
+	public string PlantPrepared {
+		get;
+		set;
+	}
+	public string PlantPlanted {
+		get;
+		set;
+	}
+	public string NeedWater {
+		get;
+		set;
+	}
+	public string PlantDead {
+		get;
+		set;
+	}
+	public string Autumn {
+		get;
+		set;
+	}
+}
+
 public class CreditsLanguage {
 	public string Back { get; set; }
 }
@@ -50,6 +77,7 @@ public class XMLLanguageLoader : MonoBehaviour {
 	{
 		LoadKidsMessages(language);
 		LoadMainMenu(language);
+		LoadTutorial(language);
         selectedLanguage = language;
     }
 	
@@ -58,7 +86,9 @@ public class XMLLanguageLoader : MonoBehaviour {
 	XDocument xmlDocMainMenu;
 	public MainMenuLanguage MainMenuLanguage = new MainMenuLanguage();
 	public CreditsLanguage CreditsLanguage = new CreditsLanguage();
+	public TutorialLanguage TutorialLanguage = new TutorialLanguage ();
 	XDocument xmlDocLanguage;
+	XDocument xmlDocTutorial;
 	public List<LanguageSelector> Languages = new List<LanguageSelector>();
 	void LoadLanguagesXML()
 	{
@@ -102,5 +132,19 @@ public class XMLLanguageLoader : MonoBehaviour {
 		MainMenuLanguage.Exit = item.Element("Exit").Value;
 		CreditsLanguage.Back = item.Element ("Back").Value;
 		MainMenuLanguage.SelectedLanguage = l.Language;
+	}
+
+	void LoadTutorial(string language)
+	{
+		var l = Languages.FirstOrDefault(x => x.Language == language);
+		if (l == null) l = Languages.First();
+		xmlDocTutorial = XDocument.Load("Assets/Code/Language/" + l.Folder + "/TutorialMessage.xml");
+		var item = xmlDocTutorial.Descendants ("Messages").First ();
+		TutorialLanguage.Autumn = item.Element ("Autumn").Value;
+		TutorialLanguage.NeedWater = item.Element ("NeedWater").Value;
+		TutorialLanguage.PlantDead = item.Element ("PlantDead").Value;
+		TutorialLanguage.PlantPlanted = item.Element ("PlantPlanted").Value;
+		TutorialLanguage.PlantPrepared = item.Element ("PlantPrepared").Value;
+		TutorialLanguage.StartMessage = item.Element ("StartMessage").Value;
 	}
 }
